@@ -112,15 +112,8 @@
                             sm:pl-6
                           "
                         >
-                          <Link
-                            
-                            class="
-                              text-blue-500
-                              hover:text-blue-700
-                              font-semibold
-                            "
-                            >{{ community.name }}</Link
-                          >
+                        {{ community.name }}
+                        
                         </td>
                         <td
                           class="
@@ -145,18 +138,10 @@
                           "
                         >
                           <Link
-                            :href="route('communities.edit', community.slug)"
+                            :href="route('communities.edit', community.id)"
                             class="text-indigo-600 hover:text-indigo-900 mr-3"
                             >Edit</Link
-                          >
-                          <Link
-                            :href="route('communities.destroy', community.slug)"
-                            class="text-red-600 hover:text-red-900"
-                            method="delete"
-                            as="button"
-                            type="button"
-                            >Delete</Link
-                          >
+                          >                   
                         </td>
                       </tr>
                     </tbody>

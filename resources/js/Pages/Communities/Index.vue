@@ -97,7 +97,7 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200 bg-white">
                       <tr
-                        v-for="community in communities"
+                        v-for="community in communities.data"
                         :key="community.id"
                       >
                         <td
@@ -152,7 +152,9 @@
                       </tr>
                     </tbody>
                   </table>
-                 
+                 <div class="m-2 p-2">
+                  <Pagination :links="communities.links" />
+                 </div>
                 </div>
               </div>
             </div>
@@ -166,7 +168,7 @@
 <script setup>
 import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
-//import Pagination from "../../Components/Pagination.vue";
+import Pagination from "../../Components/Pagination.vue";
 
 defineProps({
   communities: Object,

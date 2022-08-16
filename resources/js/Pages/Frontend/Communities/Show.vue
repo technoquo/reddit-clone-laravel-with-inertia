@@ -13,12 +13,6 @@
         >
       </div>
     </template>
-  <div class="flex justify-end md-2 p-2">
-   <Link 
-   v-if="$page.props.auth.auth_check" 
-   :href="route('communities.posts.create', community.slug)" 
-   class="px-3 py-4 rounded bg-indigo-500">Create Post</Link>
-  </div>
   <section class="flex md:flex-row m-2 p-2">
    <div class="w-8/12">
      <PostCard

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PostShowResource;
 use App\Models\Community;
 use Inertia\Inertia;
 
@@ -16,7 +17,7 @@ class PostController extends Controller
 
 
         $community = Community::where('slug', $community_slug)->first();
-        $post = Post::where('slug', $slug)->first();
+        $post = new PostShowResource(Post::where('slug', $slug)->first());
         return Inertia::render('Frontend/Posts/Show', compact('community','post'));
     }
 }

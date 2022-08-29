@@ -14,7 +14,9 @@ class CommunityController extends Controller
     public function show($slug)
     {
         $community = Community::where('slug', $slug)->firstOrFail();
-        $posts = CommunityPostResource::collection($community->posts()->with('user')->paginate(3));
+        $posts = CommunityPostResource::collection($community->posts()->with(['user', 'postVotes' => function($query){
+            $query->where('user_id', auth()->id());
+        }])->paginate(3));
        
    
 

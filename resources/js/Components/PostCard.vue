@@ -12,7 +12,7 @@
     "
   >
     <div class="mr-3 p-2">
-      Upvote
+       <PostVote :post="post"/>
     </div>
     <div>
       <div class="flex m-2 p-2">
@@ -87,7 +87,7 @@
 
 <script setup>
 import { Link } from "@inertiajs/inertia-vue3";
-//import PostVote from "./PostVote.vue";
+import PostVote from "./PostVote.vue";
 defineProps({
   post: Object,
   community: String

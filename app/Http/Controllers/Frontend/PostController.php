@@ -17,7 +17,13 @@ class PostController extends Controller
 
 
         $community = Community::where('slug', $community_slug)->first();
-        $post = new PostShowResource(Post::with('comments')->where('slug', $slug)->first());
+
+        
+        $community_post = Post::with(['comments', 'postVotes' => function ($query) {
+            $query->where('user_id', auth()->id());
+        }])->where('slug', $slug)->first();
+
+        $post = new PostShowResource($community_post);
         return Inertia::render('Frontend/Posts/Show', compact('community','post'));
     }
 }

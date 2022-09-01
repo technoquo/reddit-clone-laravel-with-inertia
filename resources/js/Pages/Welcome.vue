@@ -9,11 +9,10 @@
           :key="post.id"
         />
       </div>
-
       <div class="w-4/12 p-4">
-        <div class="m-2 p-2 bg-slate-500 text-white">
-          <h2>Top communities</h2>
-        </div>
+        <CommunityList :communities="communities.data">
+          <template #title>Top communities</template></CommunityList
+        >
       </div>
     </section>
   </guest-layout>
@@ -23,9 +22,10 @@
 import GuestLayout from "@/Layouts/Guest.vue";
 import PostCard from "@/Components/PostCard.vue";
 import Pagination from "@/Components/Pagination.vue";
+import CommunityList from "@/Components/CommunityList.vue";
+
 defineProps({
   communities: Object,
   posts: Object,
 });
 </script>
-

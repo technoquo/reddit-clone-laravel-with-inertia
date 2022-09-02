@@ -11,8 +11,7 @@
       </div>
       <div class="w-4/12 p-4">
         <CommunityList :communities="communities.data">
-          <template #title>Top communities</template></CommunityList
-        >
+          <template #title>Top communities</template></CommunityList>
       </div>
     </section>
   </guest-layout>

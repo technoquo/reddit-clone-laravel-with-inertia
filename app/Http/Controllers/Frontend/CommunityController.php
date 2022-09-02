@@ -18,8 +18,8 @@ class CommunityController extends Controller
             $query->where('user_id', auth()->id());
         }])->withCount('comments')->paginate(3));
        
-   
+        $communities = CommunityResource::collection(Community::withCount('posts')->latest()->take(4)->get());
 
-        return Inertia::render('Frontend/Communities/Show', compact('community', 'posts'));
+        return Inertia::render('Frontend/Communities/Show', compact('community', 'posts', 'communities'));
     }
 }

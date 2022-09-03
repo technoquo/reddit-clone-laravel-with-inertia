@@ -21,8 +21,8 @@
                   post.data.username
                 }}</span>
               </div>
-              <div v-if="$page.props.auth.auth_check && post.data.owner">
-                <Link
+              <div v-if="$page.props.auth.auth_check">
+                <Link v-if="can_update"
                   :href="
                     route('communities.posts.edit', [
                       community.slug,
@@ -41,7 +41,7 @@
                 >
                   Edit
                 </Link>
-                <Link
+                <Link v-if="can_delete"
                   :href="
                     route('communities.posts.destroy', [
                       community.slug,
@@ -177,7 +177,9 @@ import PostList from "@/Components/PostList.vue"
 const props = defineProps({
   community: Object,
   post: Object,
-  posts: Object
+  posts: Object,
+  can_delete: Boolean,
+  can_update: Boolean
 });
 
 const form = useForm({

@@ -53,7 +53,8 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+      
+       return $user->id === $post->user_id;
     }
 
     /**
@@ -65,7 +66,9 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+   
+          return $user->is_admin || in_array($user->id, [$post->user_id, $post->community->user_id]);
+           // return $user->id === $post->user_id;
     }
 
     /**
